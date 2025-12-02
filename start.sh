@@ -6,7 +6,11 @@ if [ -d "venv" ]; then
 fi
 
 # Устанавливаем зависимости
-pip install -r requirements.txt
+pipx install Flask
+pipx install Flask-CORS
+pipx install python-dotenv
+pipx install requests
+pipx install urllib3
 
 # Запускаем API сервер и Telegram бота в фоне
 echo "Запуск Home Assistant Mini App..."
