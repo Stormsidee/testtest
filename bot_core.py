@@ -83,7 +83,6 @@ class OptimizedHomeBot:
                 re.compile(rf'\b{i}\b', re.IGNORECASE),
                 re.compile(rf't{i}', re.IGNORECASE),
                 re.compile(rf'kws-306wf t{i}', re.IGNORECASE),
-                re.compile(rf'multimode gateway t{i}', re.IGNORECASE)
             ]
             self.HOUSE_PATTERNS[f'Домик {i}'] = patterns
         
@@ -103,7 +102,7 @@ class OptimizedHomeBot:
                 data = data.encode('utf-8')
             
             req = urllib.request.Request(url, data=data, headers=headers or {})
-            with urllib.request.urlopen(req, timeout=10) as response:
+            with urllib.request.urlopen(req, timeout=1) as response:
                 return json.loads(response.read().decode('utf-8'))
         except Exception as e:
             logger.error(f"Request error: {e}")
