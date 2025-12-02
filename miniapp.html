@@ -7,8 +7,24 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light-gray: #2d2d2d;
+                --border-color: #444444;
+                --shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+            }
+            
+            .device-toggle {
+                background: #555;  /* Темнее в темной теме */
+            }
+            
+            .sensor-section {
+                background: rgba(37, 117, 252, 0.08);  /* Чуть светлее в темной теме */
+                border-color: rgba(37, 117, 252, 0.15);
+            }
+        }
         :root {
-            --tg-theme-bg-color: #ffffff;
+            --tg-theme-bg-color:#ffffff;
             --tg-theme-text-color: #000000;
             --tg-theme-hint-color: #999999;
             --tg-theme-link-color: #2481cc;
@@ -246,7 +262,7 @@
         }
         
         .sensor-item {
-            background: white;
+            background: var(--tg-theme-secondary-bg-color);  /* ← Используем Telegram переменную */
             border-radius: 12px;
             padding: 14px;
             text-align: center;
@@ -269,9 +285,10 @@
         }
         
         .sensor-unit {
-            font-size: 14px;
-            color: var(--primary-color);
-            margin-left: 4px;
+        font-size: 14px;
+        color: var(--tg-theme-text-color);  /* ← Используем основной цвет текста */
+        opacity: 0.9;  /* ← Чуть прозрачнее для контраста */
+        margin-left: 4px;
         }
         
         /* Стили для значений сенсоров */
@@ -560,8 +577,8 @@
                         title: 'Нет данных',
                         message: 'Данные о напряжении отсутствуют',
                         background: 'rgba(221, 221, 221, 0.1)',
-                        color: '#999',
-                        indicator: '#ddd'
+                        color: 'var(--tg-theme-hint-color)',
+                        indicator: 'var(--tg-theme-hint-color)'
                     };
                 }
                 
